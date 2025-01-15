@@ -24,7 +24,7 @@ export class Address {
   public readonly bytes: Uint8Array
 
   constructor(bytes: Uint8Array) {
-    if (bytes.length !== 20) {
+    if (bytes.length !== 32) {
       throw new Error('Invalid address length')
     }
     this.bytes = bytes
@@ -34,7 +34,7 @@ export class Address {
    * Returns the zero address.
    */
   static zero(): Address {
-    return new Address(zeros(20))
+    return new Address(zeros(32))
   }
 
   /**
