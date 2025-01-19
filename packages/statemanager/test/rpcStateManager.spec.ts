@@ -321,9 +321,13 @@ describe('blockchain', () =>
     const evm = await EVM.create({ blockchain, stateManager: state })
     // Bytecode for returning the blockhash of the block previous to `blockTag`
     const code = '0x600143034060005260206000F3'
-    const contractAddress = new Address(hexToBytes('0x00000000000000000000000000000000000000ff'))
+    const contractAddress = new Address(
+      hexToBytes('0x00000000000000000000000000000000000000000000000000000000000000ff')
+    )
 
-    const caller = Address.fromString('0xd8da6bf26964af9d7eed9e03e53415d37aa96045')
+    const caller = Address.fromString(
+      '0xd8da6bf26964af9d7eed9e03e53415d37aa96045123456789012345678901234'
+    )
     await evm.stateManager.setStateRoot(
       hexToBytes('0xf8506f559699a58a4724df4fcf2ad4fd242d20324db541823f128f5974feb6c7')
     )
@@ -347,8 +351,8 @@ describe('Should return same value as DefaultStateManager when account does not 
     const rpcState = new RPCStateManager({ provider, blockTag: 1n })
     const defaultState = new DefaultStateManager()
 
-    const account0 = await rpcState.getAccount(new Address(hexToBytes(`0x${'01'.repeat(20)}`)))
-    const account1 = await defaultState.getAccount(new Address(hexToBytes(`0x${'01'.repeat(20)}`)))
+    const account0 = await rpcState.getAccount(new Address(hexToBytes(`0x${'01'.repeat(32)}`)))
+    const account1 = await defaultState.getAccount(new Address(hexToBytes(`0x${'01'.repeat(32)}`)))
     assert.equal(
       account0,
       account1,

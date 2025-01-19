@@ -5,7 +5,9 @@ import { hexToBytes } from '@ethereumjs/util'
 const main = async () => {
   // setup `stateManager` with some existing address
   const stateManager = new DefaultStateManager()
-  const contractAddress = new Address(hexToBytes('0xa94f5374fce5edbc8e2a8697c15331677e6ebf0b'))
+  const contractAddress = new Address(
+    hexToBytes('0xa94f5374fce5edbc8e2a8697c15331677e6ebf0b123456789012345678901234')
+  )
   const byteCode = hexToBytes('0x67ffffffffffffffff600160006000fb')
   const storageKey1 = hexToBytes(
     '0x0000000000000000000000000000000000000000000000000000000000000001'

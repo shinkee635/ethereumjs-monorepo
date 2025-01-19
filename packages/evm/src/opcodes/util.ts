@@ -50,7 +50,7 @@ export function trap(err: string) {
  */
 export function addresstoBytes(address: bigint | Uint8Array) {
   if (address instanceof Uint8Array) return address
-  return setLengthLeft(bigIntToBytes(address & MASK_160), 20)
+  return setLengthLeft(bigIntToBytes(address), 32)
 }
 
 /**

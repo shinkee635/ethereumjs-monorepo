@@ -68,7 +68,7 @@ describe('StatelessVerkleStateManager: Kaustinen Verkle Block', () => {
     const stateManager = new StatelessVerkleStateManager({ common, verkleCrypto })
     stateManager.initVerkleExecutionWitness(block.header.number, block.executionWitness)
 
-    const address = new Address(randomBytes(20))
+    const address = new Address(randomBytes(32))
 
     try {
       await stateManager.getAccount(address)

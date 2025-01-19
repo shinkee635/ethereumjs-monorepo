@@ -5,7 +5,9 @@ import { assert, describe, it } from 'vitest'
 import { EVM } from '../src/index.js'
 describe('async events', () => {
   it('should work', async () => {
-    const caller = new Address(hexToBytes('0x00000000000000000000000000000000000000ee'))
+    const caller = new Address(
+      hexToBytes('0x00000000000000000000000000000000000000000000000000000000000000ee')
+    )
     const common = new Common({ chain: Chain.Mainnet, hardfork: Hardfork.Constantinople })
     const evm = await EVM.create({
       common,

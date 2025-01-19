@@ -88,7 +88,7 @@ describe('ProofStateManager', () => {
     account!.balance = BigInt(1)
     account!.nonce = BigInt(2)
     await stateManager.putAccount(address, account!)
-    const address2 = new Address(hexToBytes(`0x${'20'.repeat(20)}`))
+    const address2 = new Address(hexToBytes(`0x${'20'.repeat(32)}`))
     const account2 = await stateManager.getAccount(address2)
     account!.nonce = BigInt(2)
     await stateManager.putAccount(address2, account2!)

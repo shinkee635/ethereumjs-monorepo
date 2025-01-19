@@ -64,7 +64,9 @@ describe('stateManager', () => {
 describe('Original storage cache', async () => {
   const stateManager = new DefaultStateManager()
 
-  const address = new Address(hexToBytes('0xa94f5374fce5edbc8e2a8697c15331677e6ebf0b'))
+  const address = new Address(
+    hexToBytes('0xa94f5374fce5edbc8e2a8697c15331677e6ebf0b123456789012345678901234')
+  )
   const account = createAccount()
   await stateManager.putAccount(address, account)
 

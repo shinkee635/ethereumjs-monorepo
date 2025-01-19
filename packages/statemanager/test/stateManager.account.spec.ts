@@ -16,7 +16,9 @@ describe('StateManager -> General/Account', () => {
       assert.ok(equalsBytes(stateManager['_trie'].root(), KECCAK256_RLP), 'it has default root')
 
       // commit some data to the trie
-      const address = new Address(hexToBytes('0xa94f5374fce5edbc8e2a8697c15331677e6ebf0b'))
+      const address = new Address(
+        hexToBytes('0xa94f5374fce5edbc8e2a8697c15331677e6ebf0b123456789012345678901234')
+      )
       const account = createAccount(BigInt(0), BigInt(1000))
       await stateManager.checkpoint()
       await stateManager.putAccount(address, account)
@@ -33,7 +35,9 @@ describe('StateManager -> General/Account', () => {
 
     it(`should clear the cache when the state root is set`, async () => {
       const stateManager = new DefaultStateManager({ accountCacheOpts })
-      const address = new Address(hexToBytes('0xa94f5374fce5edbc8e2a8697c15331677e6ebf0b'))
+      const address = new Address(
+        hexToBytes('0xa94f5374fce5edbc8e2a8697c15331677e6ebf0b123456789012345678901234')
+      )
       const account = createAccount()
 
       // test account storage cache
@@ -77,7 +81,9 @@ describe('StateManager -> General/Account', () => {
     it('should put and get account, and add to the underlying cache if the account is not found', async () => {
       const stateManager = new DefaultStateManager({ accountCacheOpts })
       const account = createAccount()
-      const address = new Address(hexToBytes('0xa94f5374fce5edbc8e2a8697c15331677e6ebf0b'))
+      const address = new Address(
+        hexToBytes('0xa94f5374fce5edbc8e2a8697c15331677e6ebf0b123456789012345678901234')
+      )
 
       await stateManager.putAccount(address, account)
 
@@ -95,7 +101,9 @@ describe('StateManager -> General/Account', () => {
 
     it(`should return undefined for a non-existent account`, async () => {
       const stateManager = new DefaultStateManager({ accountCacheOpts })
-      const address = new Address(hexToBytes('0xa94f5374fce5edbc8e2a8697c15331677e6ebf0b'))
+      const address = new Address(
+        hexToBytes('0xa94f5374fce5edbc8e2a8697c15331677e6ebf0b123456789012345678901234')
+      )
 
       const res = (await stateManager.getAccount(address)) === undefined
 
@@ -105,7 +113,9 @@ describe('StateManager -> General/Account', () => {
     it(`should return undefined for an existent account`, async () => {
       const stateManager = new DefaultStateManager({ accountCacheOpts })
       const account = createAccount(BigInt(0x1), BigInt(0x1))
-      const address = new Address(hexToBytes('0xa94f5374fce5edbc8e2a8697c15331677e6ebf0b'))
+      const address = new Address(
+        hexToBytes('0xa94f5374fce5edbc8e2a8697c15331677e6ebf0b123456789012345678901234')
+      )
 
       await stateManager.putAccount(address, account)
 
@@ -117,7 +127,9 @@ describe('StateManager -> General/Account', () => {
     it(`should modify account fields correctly`, async () => {
       const stateManager = new DefaultStateManager({ accountCacheOpts })
       const account = createAccount()
-      const address = new Address(hexToBytes('0xa94f5374fce5edbc8e2a8697c15331677e6ebf0b'))
+      const address = new Address(
+        hexToBytes('0xa94f5374fce5edbc8e2a8697c15331677e6ebf0b123456789012345678901234')
+      )
       await stateManager.putAccount(address, account)
 
       await stateManager.modifyAccountFields(address, { balance: BigInt(1234) })
