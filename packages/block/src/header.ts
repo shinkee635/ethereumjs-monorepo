@@ -909,7 +909,7 @@ export class BlockHeader {
     const signerBytes = this.extraData.subarray(start, end)
 
     const signerList: Uint8Array[] = []
-    const signerLength = 20
+    const signerLength = 32
     for (let start = 0; start <= signerBytes.length - signerLength; start += signerLength) {
       signerList.push(signerBytes.subarray(start, start + signerLength))
     }

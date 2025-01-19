@@ -8,7 +8,7 @@ const common = new Common({ chain: Chain.Mainnet })
 const withdrawal = <WithdrawalData>{
   index: BigInt(0),
   validatorIndex: BigInt(0),
-  address: new Address(hexToBytes(`0x${'20'.repeat(20)}`)),
+  address: new Address(hexToBytes(`0x${'20'.repeat(32)}`)),
   amount: BigInt(1000),
 }
 
