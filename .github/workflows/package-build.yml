@@ -20,7 +20,7 @@ jobs:
       - run: touch .empty1
       - uses: actions/upload-artifact@v3
         with:
-          name: ethereumjspackages.zip
+          name: ethereumjspackages
           path: |
             packages
             .empty1
