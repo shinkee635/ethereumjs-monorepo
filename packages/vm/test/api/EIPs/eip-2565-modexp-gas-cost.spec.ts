@@ -15,7 +15,9 @@ describe('EIP-2565 ModExp gas cost tests', () => {
 
     for (const test of testData) {
       const testName = test.Name
-      const to = new Address(hexToBytes('0x0000000000000000000000000000000000000005'))
+      const to = new Address(
+        hexToBytes('0x0000000000000000000000000000000000000000000000000000000000000005')
+      )
       const result = await vm.evm.runCall({
         caller: Address.zero(),
         gasLimit: BigInt(0xffffffffff),

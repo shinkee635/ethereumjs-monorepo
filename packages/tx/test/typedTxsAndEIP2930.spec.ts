@@ -43,7 +43,7 @@ const txTypes = [
   },
 ]
 
-const validAddress = hexToBytes(`0x${'01'.repeat(20)}`)
+const validAddress = hexToBytes(`0x${'01'.repeat(32)}`)
 const validSlot = hexToBytes(`0x${'01'.repeat(32)}`)
 const chainId = BigInt(Chain.Mainnet)
 
@@ -424,7 +424,7 @@ describe('[AccessListEIP2930Transaction] -> Class Specific Tests', () => {
       'should initialize correctly from its own data'
     )
 
-    const validAddress = hexToBytes(`0x${'01'.repeat(20)}`)
+    const validAddress = hexToBytes(`0x${'01'.repeat(32)}`)
     const validSlot = hexToBytes(`0x${'01'.repeat(32)}`)
     const chainId = BigInt(1)
     try {
@@ -587,14 +587,16 @@ describe('[AccessListEIP2930Transaction] -> Class Specific Tests', () => {
   // https://github.com/INFURA/go-ethlibs/blob/75b2a52a39d353ed8206cffaf68d09bd1b154aae/eth/transaction_signing_test.go#L87
 
   it('should sign transaction correctly and return expected JSON', () => {
-    const address = hexToBytes('0x0000000000000000000000000000000000001337')
+    const address = hexToBytes('0x0000000000000000000000000000000000001337123456789012345678901234')
     const slot1 = hexToBytes('0x0000000000000000000000000000000000000000000000000000000000000000')
     const txData = {
       data: hexToBytes('0x'),
       gasLimit: 0x62d4,
       gasPrice: 0x3b9aca00,
       nonce: 0x00,
-      to: new Address(hexToBytes('0xdf0a88b2b68c673713a8ec826003676f272e3573')),
+      to: new Address(
+        hexToBytes('0xdf0a88b2b68c673713a8ec826003676f272e3573123456789012345678901234')
+      ),
       value: 0x01,
       chainId: bytesToBigInt(hexToBytes('0x796f6c6f763378')),
       accessList: <any>[[address, [slot1]]],

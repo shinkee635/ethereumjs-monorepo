@@ -120,7 +120,7 @@ describe('EIP 3670 tests', () => {
     for (let i = 0; i < codes.length; i++) {
       const calldata = hexToBytes('0xf8a8fd6d')
 
-      const addr = new Address(hexToBytes(`0x${'20'.repeat(20)}`))
+      const addr = new Address(hexToBytes(`0x${'20'.repeat(32)}`))
       const pkey = hexToBytes(`0x${'42'.repeat(32)}`)
 
       const code = codes[i]

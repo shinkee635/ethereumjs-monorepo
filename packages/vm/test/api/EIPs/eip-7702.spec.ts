@@ -29,8 +29,8 @@ const defaultAuthAddr = new Address(privateToAddress(defaultAuthPkey))
 const defaultSenderPkey = hexToBytes(`0x${'40'.repeat(32)}`)
 const defaultSenderAddr = new Address(privateToAddress(defaultSenderPkey))
 
-const code1Addr = Address.fromString(`0x${'01'.repeat(20)}`)
-const code2Addr = Address.fromString(`0x${'02'.repeat(20)}`)
+const code1Addr = Address.fromString(`0x${'01'.repeat(32)}`)
+const code2Addr = Address.fromString(`0x${'02'.repeat(32)}`)
 
 type GetAuthListOpts = {
   chainId?: number
@@ -203,7 +203,7 @@ describe('EIP 7702: set code to EOA accounts', () => {
     const checkAddressWarmCode = hexToBytes(
       `0x5F5F5F5F5F73${defaultAuthAddr.toString().slice(2)}5AF1`
     )
-    const checkAddressWarm = Address.fromString(`0x${'FA'.repeat(20)}`)
+    const checkAddressWarm = Address.fromString(`0x${'FA'.repeat(32)}`)
 
     await vm.stateManager.putContractCode(checkAddressWarm, checkAddressWarmCode)
 

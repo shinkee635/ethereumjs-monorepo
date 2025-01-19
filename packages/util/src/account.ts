@@ -484,6 +484,7 @@ export const generateAddress = function (from: Uint8Array, nonce: Uint8Array): U
   assertIsBytes(from)
   assertIsBytes(nonce)
 
+  console.log('Testing generate address 1: ' + from + ' nonce: ' + nonce)
   if (bytesToBigInt(nonce) === BIGINT_0) {
     // in RLP we want to encode null in the case of zero nonce
     // read the RLP documentation for an answer if you dare
@@ -508,6 +509,8 @@ export const generateAddress2 = function (
   assertIsBytes(from)
   assertIsBytes(salt)
   assertIsBytes(initCode)
+
+  console.log('Testing generate address 2: ' + from + ' salt: ' + salt)
 
   if (from.length !== 32) {
     throw new Error('Expected from to be of length 32')

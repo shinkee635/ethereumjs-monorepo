@@ -33,8 +33,12 @@ const testCases = [
 
 describe('Constantinople: EIP-1283', () => {
   it('net-metering SSTORE', async () => {
-    const caller = new Address(hexToBytes('0x0000000000000000000000000000000000000000'))
-    const addr = new Address(hexToBytes('0x00000000000000000000000000000000000000ff'))
+    const caller = new Address(
+      hexToBytes('0x0000000000000000000000000000000000000000000000000000000000000000')
+    )
+    const addr = new Address(
+      hexToBytes('0x00000000000000000000000000000000000000000000000000000000000000ff')
+    )
     const key = setLengthLeft(bigIntToBytes(BigInt(0)), 32)
     for (const testCase of testCases) {
       const common = new Common({ chain: Chain.Mainnet, hardfork: Hardfork.Constantinople })

@@ -13,7 +13,7 @@ import type { PrefixedHexString } from '@ethereumjs/util'
 const common = Common.custom({ chainId: 4 })
 common.setHardfork(Hardfork.London)
 
-const validAddress = hexToBytes(`0x${'01'.repeat(20)}`)
+const validAddress = hexToBytes(`0x${'01'.repeat(32)}`)
 const validSlot = hexToBytes(`0x${'01'.repeat(32)}`)
 const chainId = BigInt(4)
 

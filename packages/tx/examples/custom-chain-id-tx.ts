@@ -12,7 +12,8 @@ const tx = LegacyTransaction.fromSerializedTx(txData, { common })
 
 if (
   tx.isValid() &&
-  tx.getSenderAddress().toString() === '0x9dfd2d2b2ed960923f7bf2e8883d73f213f3b24b'
+  tx.getSenderAddress().toString() ===
+    '0x9dfd2d2b2ed960923f7bf2e8883d73f213f3b24b123456789012345678901234'
 ) {
   console.log('Correctly created the tx')
 } else {

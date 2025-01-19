@@ -70,7 +70,7 @@ describe('EIP 6780 tests', () => {
   it('should not destroy contract if selfdestructed in a tx after creating the contract', async () => {
     const vm = await getVM(common)
 
-    const target = Address.fromString('0x' + 'ff'.repeat(20))
+    const target = Address.fromString('0x' + 'ff'.repeat(32))
 
     await vm.stateManager.putContractCode(target, payload)
     const targetContract = await vm.stateManager.getAccount(target)

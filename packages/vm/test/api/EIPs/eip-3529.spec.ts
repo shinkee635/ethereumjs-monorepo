@@ -8,7 +8,7 @@ import { VM } from '../../../src/vm'
 import type { InterpreterStep } from '@ethereumjs/evm'
 import type { PrefixedHexString } from '@ethereumjs/util'
 
-const address = new Address(hexToBytes(`0x${'11'.repeat(20)}`))
+const address = new Address(hexToBytes(`0x${'11'.repeat(32)}`))
 const pkey = hexToBytes(`0x${'20'.repeat(32)}`)
 
 const testCases = [
@@ -193,7 +193,7 @@ describe('EIP-3529 tests', () => {
       }
     })
 
-    const address = new Address(hexToBytes(`0x${'20'.repeat(20)}`))
+    const address = new Address(hexToBytes(`0x${'20'.repeat(32)}`))
 
     const value = hexToBytes(`0x${'01'.repeat(32)}`)
 

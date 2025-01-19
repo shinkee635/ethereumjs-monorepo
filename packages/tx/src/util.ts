@@ -204,8 +204,8 @@ export class AuthorizationLists {
       const r = authorizationListItem[4]
       const s = authorizationListItem[5]
       validateNoLeadingZeroes({ yParity, r, s })
-      if (address.length !== 20) {
-        throw new Error('Invalid EIP-7702 transaction: address length should be 20 bytes')
+      if (address.length !== 32) {
+        throw new Error('Invalid EIP-7702 transaction: address length should be 32 bytes')
       }
       if (nonceList.length > 1) {
         throw new Error('Invalid EIP-7702 transaction: nonce list should consist of at most 1 item')

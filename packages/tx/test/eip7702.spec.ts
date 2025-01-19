@@ -60,7 +60,7 @@ describe('[EOACodeEIP7702Transaction]', () => {
           authorizationList: [
             {
               chainId: '0x',
-              address: `0x${'20'.repeat(20)}`,
+              address: `0x${'20'.repeat(32)}`,
               nonce: ['0x1', '0x2'],
               yParity: '0x1',
               r: ones32,
@@ -78,7 +78,7 @@ describe('[EOACodeEIP7702Transaction]', () => {
           authorizationList: [
             {
               chainId: '0x',
-              address: `0x${'20'.repeat(20)}`,
+              address: `0x${'20'.repeat(32)}`,
               nonce: ['0x1'],
               yParity: '0x1',
               r: ones32,
@@ -96,7 +96,7 @@ describe('[EOACodeEIP7702Transaction]', () => {
           authorizationList: [
             {
               chainId: '0x',
-              address: `0x${'20'.repeat(20)}`,
+              address: `0x${'20'.repeat(32)}`,
               nonce: ['0x1'],
               yParity: '0x1',
               r: undefined as never,
@@ -114,7 +114,7 @@ describe('[EOACodeEIP7702Transaction]', () => {
           authorizationList: [
             {
               chainId: '0x',
-              address: `0x${'20'.repeat(20)}`,
+              address: `0x${'20'.repeat(32)}`,
               nonce: ['0x1'],
               yParity: undefined as never,
               r: ones32,
@@ -132,7 +132,7 @@ describe('[EOACodeEIP7702Transaction]', () => {
           authorizationList: [
             {
               chainId: '0x',
-              address: `0x${'20'.repeat(20)}`,
+              address: `0x${'20'.repeat(32)}`,
               nonce: undefined as never,
               yParity: '0x1',
               r: ones32,
@@ -168,7 +168,7 @@ describe('[EOACodeEIP7702Transaction]', () => {
           authorizationList: [
             {
               chainId: undefined as never,
-              address: `0x${'20'.repeat(20)}`,
+              address: `0x${'20'.repeat(32)}`,
               nonce: ['0x1'],
               yParity: '0x1',
               r: ones32,
@@ -186,7 +186,7 @@ describe('[EOACodeEIP7702Transaction]', () => {
           authorizationList: [
             {
               chainId: '0x',
-              address: `0x${'20'.repeat(20)}`,
+              address: `0x${'20'.repeat(32)}`,
               nonce: ['0x1'],
               yParity: '0x1',
               r: ones32,

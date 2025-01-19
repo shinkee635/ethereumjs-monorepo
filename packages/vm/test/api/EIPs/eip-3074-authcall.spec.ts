@@ -49,8 +49,8 @@ const callerAddress = new Address(privateToAddress(callerPrivateKey))
 const PREBALANCE = BigInt(10000000)
 
 const address = new Address(privateToAddress(privateKey))
-const contractAddress = new Address(hexToBytes(`0x${'ff'.repeat(20)}`))
-const contractStorageAddress = new Address(hexToBytes(`0x${'ee'.repeat(20)}`))
+const contractAddress = new Address(hexToBytes(`0x${'ff'.repeat(32)}`))
+const contractStorageAddress = new Address(hexToBytes(`0x${'ee'.repeat(32)}`))
 
 // Bytecode to exit call frame and return the topmost stack item
 const RETURNTOP = hexToBytes('0x60005260206000F3')
@@ -586,7 +586,7 @@ describe('EIP-3074 AUTHCALL', () => {
     const code = concatBytes(
       getAuthCode(message, signature, authAddress),
       getAuthCallCode({
-        address: new Address(hexToBytes(`0x${'cc'.repeat(20)}`)),
+        address: new Address(hexToBytes(`0x${'cc'.repeat(32)}`)),
         value: 1n,
       }),
       RETURNTOP

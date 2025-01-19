@@ -73,7 +73,9 @@ describe('EIP 1153: transient storage', () => {
     const returndata = new Uint8Array(32)
     returndata[31] = 0x02
 
-    const address = new Address(hexToBytes('0x00000000000000000000000636F6E7472616374'))
+    const address = new Address(
+      hexToBytes('0x00000000000000000000000000000000000000000000000636F6E7472616374')
+    )
     const tx = LegacyTransaction.fromTxData({
       gasLimit: BigInt(21000 + 9000),
       to: address,
@@ -112,7 +114,9 @@ describe('EIP 1153: transient storage', () => {
     // transactions
     const code =
       '0x36600014630000001c5760016300000012575b60ff60005d600080f35b60005c60005260206000f3'
-    const address = new Address(hexToBytes('0x000000000000000000000000636F6E7472616374'))
+    const address = new Address(
+      hexToBytes('0x000000000000000000000000000000000000000000000000636F6E7472616374')
+    )
 
     const test = {
       contracts: [{ address, code }],
@@ -169,9 +173,11 @@ describe('EIP 1153: transient storage', () => {
 
   it('tload should not keep reverted changes', async () => {
     // logic address has a contract with transient storage logic in it
-    const logicAddress = new Address(hexToBytes('0xEA674fdDe714fd979de3EdF0F56AA9716B898ec8'))
+    const logicAddress = new Address(
+      hexToBytes('0xEA674fdDe714fd979de3EdF0F56AA9716B898ec8123456789012345678901234')
+    )
     // calling address is the address that calls the logic address
-    const callingAddress = new Address(new Uint8Array(20).fill(0xff))
+    const callingAddress = new Address(new Uint8Array(32).fill(0xff))
 
     // Perform 3 calls:
     // - TSTORE, return

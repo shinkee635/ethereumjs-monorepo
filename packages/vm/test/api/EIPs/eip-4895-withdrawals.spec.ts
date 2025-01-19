@@ -35,7 +35,7 @@ describe('EIP4895 tests', () => {
   it('EIP4895: withdrawals execute as expected', async () => {
     const vm = await VM.create({ common })
     const withdrawals = <WithdrawalData[]>[]
-    const addresses = ['20'.repeat(20), '30'.repeat(20), '40'.repeat(20)]
+    const addresses = ['20'.repeat(32), '30'.repeat(32), '40'.repeat(32)]
     const amounts = [BigInt(1000), BigInt(3000), BigInt(5000)]
 
     /*
@@ -45,12 +45,12 @@ describe('EIP4895 tests', () => {
         SSTORE
       If code is ran, this stores "2" at slot "0". Check if withdrawal operations do not invoke this code
     */
-    const withdrawalCheckAddress = new Address(hexToBytes(`0x${'fe'.repeat(20)}`))
+    const withdrawalCheckAddress = new Address(hexToBytes(`0x${'fe'.repeat(32)}`))
     const withdrawalCode = hexToBytes('0x6002600055')
 
     await vm.stateManager.putContractCode(withdrawalCheckAddress, withdrawalCode)
 
-    const contractAddress = new Address(hexToBytes(`0x${'ff'.repeat(20)}`))
+    const contractAddress = new Address(hexToBytes(`0x${'ff'.repeat(32)}`))
 
     /*
         PUSH <addresses[0]>

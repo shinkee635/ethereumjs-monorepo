@@ -93,9 +93,9 @@ const deploymentConfigs = [
     ['0x1b', '0x539', '0x1b9b6eb1f0'],
     // sender, hash, deployed address
     [
-      '0xa4690f0ed0d089faa1e0ad94c8f1b4a2fd4b0734',
+      '0xa4690f0ed0d089faa1e0ad94c8f1b4a2fd4b0734123456789012345678901234',
       '0x7ba81426bfa88a2cf4ea5c9abbbe83619505acd1173bc8450f93cf17cde3784b',
-      '0x25a219378dad9b3503c8268c9ca836a52427a4fb',
+      '0x25a219378dad9b3503c8268c9ca836a52427a4fb123456789012345678901234',
     ],
   ],
   // may 25 configuration with set on the lines of 4788
@@ -108,9 +108,9 @@ const deploymentConfigs = [
     ['0x1b', '0x539', '0x1b9b6eb1f0'],
     // sender, hash, deployed address
     [
-      '0xe473f7e92ba2490e9fcbbe8bb9c3be3adbb74efc',
+      '0xe473f7e92ba2490e9fcbbe8bb9c3be3adbb74efc123456789012345678901234',
       '0x3c769a03d6e2212f1d26ab59ba797dce0900df29ffd23c1dd391fd6b217973ad',
-      '0x0aae40965e6800cd9b1f4b05ff21581047e3f91e',
+      '0x0aae40965e6800cd9b1f4b05ff21581047e3f91e123456789012345678901234',
     ],
   ],
 ]

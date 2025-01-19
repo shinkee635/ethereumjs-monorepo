@@ -9,7 +9,7 @@ const txData = {
   gasLimit: '0x02625a00',
   gasPrice: '0x01',
   nonce: '0x00',
-  to: '0xcccccccccccccccccccccccccccccccccccccccc',
+  to: '0xcccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc',
   value: '0x0186a0',
   v: '0x01',
   r: '0xafb6e247b1c490e284053c87ab5f6b59e219d51f743f7a4d83e400782bc7e4b9',
@@ -17,7 +17,7 @@ const txData = {
   chainId: '0x01',
   accessList: [
     {
-      address: '0x0000000000000000000000000000000000000101',
+      address: '0x0000000000000000000000000000000000000000000000000000000000000101',
       storageKeys: [
         '0x0000000000000000000000000000000000000000000000000000000000000000',
         '0x00000000000000000000000000000000000000000000000000000000000060a7',
