@@ -509,8 +509,6 @@ export const generateAddress2 = function (
   assertIsBytes(salt)
   assertIsBytes(initCode)
 
-  console.log('Testing generate address 2: ' + from + ' salt: ' + salt)
-
   if (from.length !== 32) {
     throw new Error('Expected from to be of length 32')
   }
