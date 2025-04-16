@@ -424,7 +424,7 @@ export const isValidAddress = function (hexAddress: string): hexAddress is Prefi
     return false
   }
 
-  return /^0x[0-9a-fA-F]{40}$/.test(hexAddress)
+  return /^0x[0-9a-fA-F]{64}$/.test(hexAddress)
 }
 
 /**
@@ -491,11 +491,11 @@ export const generateAddress = function (from: Uint8Array, nonce: Uint8Array): U
   if (bytesToBigInt(nonce) === BIGINT_0) {
     // in RLP we want to encode null in the case of zero nonce
     // read the RLP documentation for an answer if you dare
-    return keccak256(RLP.encode([from, Uint8Array.from([])])).subarray(-20)
+    return keccak256(RLP.encode([from, Uint8Array.from([])])).subarray(-32)
   }
 
   // Only take the lower 160bits of the hash
-  return keccak256(RLP.encode([from, nonce])).subarray(-20)
+  return keccak256(RLP.encode([from, nonce])).subarray(-32)
 }
 
 /**
@@ -513,8 +513,8 @@ export const generateAddress2 = function (
   assertIsBytes(salt)
   assertIsBytes(initCode)
 
-  if (from.length !== 20) {
-    throw EthereumJSErrorWithoutCode('Expected from to be of length 20')
+  if (from.length !== 32) {
+    throw EthereumJSErrorWithoutCode('Expected from to be of length 32')
   }
   if (salt.length !== 32) {
     throw EthereumJSErrorWithoutCode('Expected salt to be of length 32')
@@ -522,7 +522,7 @@ export const generateAddress2 = function (
 
   const address = keccak256(concatBytes(hexToBytes('0xff'), from, salt, keccak256(initCode)))
 
-  return address.subarray(-20)
+  return address.subarray(-32)
 }
 
 /**
@@ -578,7 +578,7 @@ export const pubToAddress = function (pubKey: Uint8Array, sanitize: boolean = fa
     throw EthereumJSErrorWithoutCode('Expected pubKey to be of length 64')
   }
   // Only take the lower 160bits of the hash
-  return keccak256(pubKey).subarray(-20)
+  return keccak256(pubKey).subarray(-32)
 }
 export const publicToAddress = pubToAddress
 
@@ -615,7 +615,7 @@ export const importPublic = function (publicKey: Uint8Array): Uint8Array {
  * Returns the zero address.
  */
 export const zeroAddress = function (): PrefixedHexString {
-  return bytesToHex(new Uint8Array(20))
+  return bytesToHex(new Uint8Array(32))
 }
 
 /**

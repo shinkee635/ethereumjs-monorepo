@@ -15,7 +15,9 @@ const testCases = [
 const code = ['47', '60', '00', '53', '60', '01', '60', '00', 'f3']
 describe('Istanbul: EIP-1884', () => {
   it('SELFBALANCE', async () => {
-    const addr = new Address(hexToBytes('0x00000000000000000000000000000000000000ff'))
+    const addr = new Address(
+      hexToBytes('0x00000000000000000000000000000000000000000000000000000000000000ff'),
+    )
     const runCodeArgs = {
       code: hexToBytes(`0x${code.join('')}`),
       gasLimit: BigInt(0xffff),

@@ -87,8 +87,8 @@ describe('reorg tests', () => {
     const base = { extraData, gasLimit, difficulty: 1 }
 
     const nonce = CLIQUE_NONCE_AUTH
-    const beneficiary1 = new Address(new Uint8Array(20).fill(1))
-    const beneficiary2 = new Address(new Uint8Array(20).fill(2))
+    const beneficiary1 = new Address(new Uint8Array(32).fill(1))
+    const beneficiary2 = new Address(new Uint8Array(32).fill(2))
 
     const block1_low = createBlock(
       {

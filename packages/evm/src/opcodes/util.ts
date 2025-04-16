@@ -5,7 +5,7 @@ import {
   BIGINT_2,
   BIGINT_32,
   BIGINT_64,
-  BIGINT_160,
+  //  BIGINT_160,
   BIGINT_NEG1,
   bytesToHex,
   createAddressFromBigInt,
@@ -22,7 +22,7 @@ import type { Address } from '@ethereumjs/util'
 import type { ERROR } from '../exceptions.ts'
 import type { RunState } from '../interpreter.ts'
 
-const MASK_160 = (BIGINT_1 << BIGINT_160) - BIGINT_1
+//const MASK_160 = (BIGINT_1 << BIGINT_160) - BIGINT_1
 
 export function mod(a: bigint, b: bigint) {
   let r = a % b
@@ -66,7 +66,7 @@ export function exponentiation(bas: bigint, exp: bigint) {
  * @param value 160-bit integer
  */
 export function createAddressFromStackBigInt(value: bigint): Address {
-  const maskedValue = value & MASK_160
+  const maskedValue = value // & MASK_160
   return createAddressFromBigInt(maskedValue)
 }
 

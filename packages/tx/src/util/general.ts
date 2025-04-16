@@ -21,7 +21,7 @@ export const normalizeTxParams = (txParamsFromRPC: any): TypedTxData => {
   // strict byte length checking
   txParams.to =
     txParams.to !== null && txParams.to !== undefined
-      ? setLengthLeft(toBytes(txParams.to), 20)
+      ? setLengthLeft(toBytes(txParams.to), 32)
       : null
 
   // Normalize the v/r/s values. If RPC returns '0x0', ensure v/r/s are set to `undefined` in the tx.

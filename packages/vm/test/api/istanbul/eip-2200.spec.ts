@@ -44,8 +44,12 @@ const testCases = [
 
 describe('Istanbul: EIP-2200', () => {
   it('net-metering SSTORE', async () => {
-    const caller = new Address(hexToBytes('0x0000000000000000000000000000000000000000'))
-    const addr = new Address(hexToBytes('0x00000000000000000000000000000000000000ff'))
+    const caller = new Address(
+      hexToBytes('0x0000000000000000000000000000000000000000000000000000000000000000'),
+    )
+    const addr = new Address(
+      hexToBytes('0x00000000000000000000000000000000000000000000000000000000000000ff'),
+    )
     const key = setLengthLeft(hexToBytes(`0x${BigInt(0).toString(16)}`), 32)
 
     for (const testCase of testCases) {

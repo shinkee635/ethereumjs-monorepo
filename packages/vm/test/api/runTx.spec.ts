@@ -209,7 +209,9 @@ describe('runTx() -> successful API parameter usage', async () => {
       )
       const tx = unsignedTx.sign(privateKey)
 
-      const coinbase = hexToBytes('0x00000000000000000000000000000000000000ff')
+      const coinbase = hexToBytes(
+        '0x00000000000000000000000000000000000000000000000000000000000000ff',
+      )
       const block = createBlock(
         {
           header: {
@@ -446,7 +448,9 @@ describe('runTx() -> runtime behavior', () => {
         INVALID
       */
       const code = hexToBytes('0x6001600055FE')
-      const address = new Address(hexToBytes('0x00000000000000000000000000000000000000ff'))
+      const address = new Address(
+        hexToBytes('0x00000000000000000000000000000000000000000000000000000000000000ff'),
+      )
       await vm.stateManager.putCode(address, code)
       await vm.stateManager.putStorage(
         address,
@@ -682,7 +686,7 @@ describe('runTx() -> consensus bugs', () => {
       nonce: 0,
       accessList: [
         {
-          address: '0x32dcab0ef3fb2de2fce1d2e0799d36239671f04a',
+          address: '0x00000000000000000000000032dcab0ef3fb2de2fce1d2e0799d36239671f04a',
           storageKeys: ['0x0000000000000000000000000000000000000000000000000000000000000008'],
         },
       ],
@@ -775,7 +779,7 @@ it('Validate EXTCODEHASH puts KECCAK256_NULL on stack if calling account has no 
   // CALLER EXTCODEHASH PUSH 0 SSTORE STOP
   // Puts EXTCODEHASH of CALLER into slot 0
   const code = hexToBytes('0x333F60005500')
-  const codeAddr = createAddressFromString('0x' + '20'.repeat(20))
+  const codeAddr = createAddressFromString('0x' + '20'.repeat(32))
   await vm.stateManager.putCode(codeAddr, code)
 
   const tx = createLegacyTx({
@@ -808,7 +812,7 @@ it('Validate CALL does not charge new account gas when calling CALLER and caller
 
   // Calls CALLER and sends back the ETH just sent with the transaction
   const code = hexToBytes('0x600080808034335AF100')
-  const codeAddr = createAddressFromString('0x' + '20'.repeat(20))
+  const codeAddr = createAddressFromString('0x' + '20'.repeat(32))
   await vm.stateManager.putCode(codeAddr, code)
 
   const tx = createLegacyTx({
@@ -839,7 +843,7 @@ it('Validate SELFDESTRUCT does not charge new account gas when calling CALLER an
   // CALLER EXTCODEHASH PUSH 0 SSTORE STOP
   // Puts EXTCODEHASH of CALLER into slot 0
   const code = hexToBytes('0x33FF')
-  const codeAddr = createAddressFromString('0x' + '20'.repeat(20))
+  const codeAddr = createAddressFromString('0x' + '20'.repeat(32))
   await vm.stateManager.putCode(codeAddr, code)
 
   const tx = createLegacyTx({

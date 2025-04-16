@@ -20,7 +20,9 @@ describe('StateManager -> General/Account', () => {
       assert.isTrue(equalsBytes(stateManager['_trie'].root(), KECCAK256_RLP), 'it has default root')
 
       // commit some data to the trie
-      const address = createAddressFromString('0xa94f5374fce5edbc8e2a8697c15331677e6ebf0b')
+      const address = createAddressFromString(
+        '0x000000000000000000000000a94f5374fce5edbc8e2a8697c15331677e6ebf0b',
+      )
       const account = createAccountWithDefaults(BigInt(0), BigInt(1000))
       await stateManager.checkpoint()
       await stateManager.putAccount(address, account)
@@ -39,7 +41,9 @@ describe('StateManager -> General/Account', () => {
       const stateManager = new MerkleStateManager({
         caches: new Caches({ account: accountCacheOpts }),
       })
-      const address = createAddressFromString('0xa94f5374fce5edbc8e2a8697c15331677e6ebf0b')
+      const address = createAddressFromString(
+        '0x000000000000000000000000a94f5374fce5edbc8e2a8697c15331677e6ebf0b',
+      )
       const account = createAccountWithDefaults()
 
       // test account storage cache
@@ -85,7 +89,9 @@ describe('StateManager -> General/Account', () => {
         caches: new Caches({ account: accountCacheOpts }),
       })
       const account = createAccountWithDefaults()
-      const address = createAddressFromString('0xa94f5374fce5edbc8e2a8697c15331677e6ebf0b')
+      const address = createAddressFromString(
+        '0x000000000000000000000000a94f5374fce5edbc8e2a8697c15331677e6ebf0b',
+      )
 
       await stateManager.putAccount(address, account)
 
@@ -108,7 +114,9 @@ describe('StateManager -> General/Account', () => {
 
       assert.isUndefined(
         await stateManager.getAccount(
-          createAddressFromString('0xa94f5374fce5edbc8e2a8697c15331677e6ebf0b'),
+          createAddressFromString(
+            '0x000000000000000000000000a94f5374fce5edbc8e2a8697c15331677e6ebf0b',
+          ),
         ),
       )
     })
@@ -118,7 +126,9 @@ describe('StateManager -> General/Account', () => {
         caches: new Caches({ account: accountCacheOpts }),
       })
       const account = createAccountWithDefaults(BigInt(0x1), BigInt(0x1))
-      const address = createAddressFromString('0xa94f5374fce5edbc8e2a8697c15331677e6ebf0b')
+      const address = createAddressFromString(
+        '0x000000000000000000000000a94f5374fce5edbc8e2a8697c15331677e6ebf0b',
+      )
 
       await stateManager.putAccount(address, account)
 
@@ -130,7 +140,9 @@ describe('StateManager -> General/Account', () => {
         caches: new Caches({ account: accountCacheOpts }),
       })
       const account = createAccountWithDefaults()
-      const address = createAddressFromString('0xa94f5374fce5edbc8e2a8697c15331677e6ebf0b')
+      const address = createAddressFromString(
+        '0x000000000000000000000000a94f5374fce5edbc8e2a8697c15331677e6ebf0b',
+      )
       await stateManager.putAccount(address, account)
 
       await stateManager.modifyAccountFields(address, { balance: BigInt(1234) })

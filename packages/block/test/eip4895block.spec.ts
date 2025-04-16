@@ -162,7 +162,7 @@ describe('EIP4895 tests', () => {
     const withdrawal = <WithdrawalData>{
       index: BigInt(0),
       validatorIndex: BigInt(0),
-      address: new Address(hexToBytes(`0x${'20'.repeat(20)}`)),
+      address: new Address(hexToBytes(`0x${'20'.repeat(32)}`)),
       amount: BigInt(1000),
     }
 
@@ -187,7 +187,7 @@ describe('EIP4895 tests', () => {
     const withdrawal2 = <WithdrawalData>{
       index: BigInt(1),
       validatorIndex: BigInt(11),
-      address: new Address(hexToBytes(`0x${'30'.repeat(20)}`)),
+      address: new Address(hexToBytes(`0x${'30'.repeat(32)}`)),
       amount: BigInt(2000),
     }
 

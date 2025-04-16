@@ -10,7 +10,7 @@ import type { AccessList, AccessListBytes } from '../types.ts'
  */
 export function accessListBytesToJSON(accessList: AccessListBytes): AccessList {
   return accessList.map(([address, storageSlots]) => ({
-    address: bytesToHex(setLengthLeft(address, 20)),
+    address: bytesToHex(setLengthLeft(address, 32)),
     storageKeys: storageSlots.map((slot) => bytesToHex(setLengthLeft(slot, 32))),
   }))
 }

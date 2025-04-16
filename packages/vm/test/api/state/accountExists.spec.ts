@@ -13,8 +13,12 @@ describe('correctly apply new account gas fee on pre-Spurious Dragon hardforks',
     // This test verifies that issue is now resolved
 
     // setup the accounts for this test
-    const caller = new Address(hexToBytes('0x1747de68ae74afa4e00f8ef79b9c875a339cda70')) // caller address
-    const contractAddress = new Address(hexToBytes('0x02E815899482f27C899fB266319dE7cc97F72E87')) // contract address
+    const caller = new Address(
+      hexToBytes('0x0000000000000000000000001747de68ae74afa4e00f8ef79b9c875a339cda70'),
+    ) // caller address
+    const contractAddress = new Address(
+      hexToBytes('0x00000000000000000000000002E815899482f27C899fB266319dE7cc97F72E87'),
+    ) // contract address
     // setup the vm
     const common = new Common({ chain: Mainnet, hardfork: Hardfork.Homestead })
     const vm = await createVM({ common })
@@ -55,8 +59,12 @@ describe('correctly apply new account gas fee on pre-Spurious Dragon hardforks',
 describe('do not apply new account gas fee for empty account in DB on pre-Spurious Dragon hardforks', () => {
   it('should work', async () => {
     // setup the accounts for this test
-    const caller = new Address(hexToBytes('0x1747de68ae74afa4e00f8ef79b9c875a339cda70')) // caller address
-    const contractAddress = new Address(hexToBytes('0x02E815899482f27C899fB266319dE7cc97F72E87')) // contract address
+    const caller = new Address(
+      hexToBytes('0x0000000000000000000000001747de68ae74afa4e00f8ef79b9c875a339cda70'),
+    ) // caller address
+    const contractAddress = new Address(
+      hexToBytes('0x00000000000000000000000002E815899482f27C899fB266319dE7cc97F72E87'),
+    ) // contract address
     // setup the vm
     const common = new Common({ chain: Mainnet, hardfork: Hardfork.Homestead })
     const vm = await createVM({ common })
@@ -68,7 +76,9 @@ describe('do not apply new account gas fee for empty account in DB on pre-Spurio
     existingAccount!.balance = BigInt(1)
     await vm.stateManager.putAccount(existingAddress, existingAccount!)
     // add empty account to DB
-    const emptyAddress = new Address(hexToBytes('0xf48a1bdc65d9ccb4b569ffd4bffff415b90783d6'))
+    const emptyAddress = new Address(
+      hexToBytes('0x000000000000000000000000f48a1bdc65d9ccb4b569ffd4bffff415b90783d6'),
+    )
     await vm.stateManager.putAccount(emptyAddress, new Account())
     const emptyAccount = (await vm.stateManager.getAccount(emptyAddress)) as Account
     await (vm.stateManager as MerkleStateManager)['_trie'].put(

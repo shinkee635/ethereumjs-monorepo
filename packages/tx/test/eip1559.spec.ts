@@ -13,7 +13,7 @@ import type { JSONTx } from '../src/index.ts'
 const common = createCustomCommon({ chainId: 4 }, Mainnet)
 common.setHardfork(Hardfork.London)
 
-const validAddress = hexToBytes(`0x${'01'.repeat(20)}`)
+const validAddress = hexToBytes(`0x${'01'.repeat(32)}`)
 const validSlot = hexToBytes(`0x${'01'.repeat(32)}`)
 const chainId = BigInt(4)
 

@@ -64,7 +64,9 @@ describe('stateManager', () => {
 describe('Original storage cache', async () => {
   const stateManager = new MerkleStateManager()
 
-  const address = new Address(hexToBytes('0xa94f5374fce5edbc8e2a8697c15331677e6ebf0b'))
+  const address = new Address(
+    hexToBytes('0x000000000000000000000000a94f5374fce5edbc8e2a8697c15331677e6ebf0b'),
+  )
   const account = createAccount()
   await stateManager.putAccount(address, account)
 

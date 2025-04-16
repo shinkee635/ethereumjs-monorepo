@@ -17,7 +17,9 @@ const common = new Common({
   hardfork: Hardfork.Berlin,
 })
 
-const validAddress = hexToBytes('0x00000000000000000000000000000000000000ff')
+const validAddress = hexToBytes(
+  '0x00000000000000000000000000000000000000000000000000000000000000ff',
+)
 const validSlot = hexToBytes(`0x${'00'.repeat(32)}`)
 
 // setup the accounts for this test

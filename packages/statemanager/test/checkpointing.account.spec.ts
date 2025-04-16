@@ -29,7 +29,7 @@ const accountEval = async (
 type CompareList = [Account | undefined, bigint | undefined]
 
 describe('StateManager -> Account Checkpointing', () => {
-  const address = new Address(hexToBytes(`0x${'11'.repeat(20)}`))
+  const address = new Address(hexToBytes(`0x${'11'.repeat(32)}`))
 
   const stateManagers = [MerkleStateManager, SimpleStateManager]
 

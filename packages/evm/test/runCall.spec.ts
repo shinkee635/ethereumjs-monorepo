@@ -27,7 +27,7 @@ import type { EVMRunCallOpts } from '../src/types.ts'
 function create2address(sourceAddress: Address, codeHash: Uint8Array, salt: Uint8Array): Address {
   const rlp_proc_bytes = hexToBytes('0xff')
   const hashBytes = concatBytes(rlp_proc_bytes, sourceAddress.bytes, salt, codeHash)
-  return new Address(keccak256(hashBytes).slice(12))
+  return new Address(keccak256(hashBytes))
 }
 
 describe('RunCall tests', () => {
@@ -52,8 +52,12 @@ describe('RunCall tests', () => {
 
   it('Constantinople: EIP-1014 CREATE2 creates the right contract address', async () => {
     // setup the accounts for this test
-    const caller = new Address(hexToBytes('0x00000000000000000000000000000000000000ee')) // caller address
-    const contractAddress = new Address(hexToBytes('0x00000000000000000000000000000000000000ff')) // contract address
+    const caller = new Address(
+      hexToBytes('0x00000000000000000000000000000000000000000000000000000000000000ee'),
+    ) // caller address
+    const contractAddress = new Address(
+      hexToBytes('0x00000000000000000000000000000000000000000000000000000000000000ff'),
+    ) // contract address
     // setup the vm
     const common = new Common({ chain: Mainnet, hardfork: Hardfork.Constantinople })
     const evm = await createEVM({ common })
@@ -95,7 +99,7 @@ describe('RunCall tests', () => {
       // run the actual call
       const res = await evm.runCall(runCallArgs)
       // retrieve the return value and convert it to an address (remove the first 12 bytes from the 32-byte return value)
-      const executionReturnValue = new Address(res.execResult.returnValue.slice(12))
+      const executionReturnValue = new Address(res.execResult.returnValue)
       if (!expectedAddress.equals(executionReturnValue)) {
         assert.fail('contract address not equal')
       }
@@ -106,8 +110,12 @@ describe('RunCall tests', () => {
 
   it('Byzantium cannot access Constantinople opcodes', async () => {
     // setup the accounts for this test
-    const caller = new Address(hexToBytes('0x00000000000000000000000000000000000000ee')) // caller address
-    const contractAddress = new Address(hexToBytes('0x00000000000000000000000000000000000000ff')) // contract address
+    const caller = new Address(
+      hexToBytes('0x00000000000000000000000000000000000000000000000000000000000000ee'),
+    ) // caller address
+    const contractAddress = new Address(
+      hexToBytes('0x00000000000000000000000000000000000000000000000000000000000000ff'),
+    ) // contract address
     // setup the evm
     const evmByzantium = await createEVM({
       common: new Common({ chain: Mainnet, hardfork: Hardfork.Byzantium }),
@@ -148,8 +156,12 @@ describe('RunCall tests', () => {
 
   it('Ensure that Istanbul sstoreCleanRefundEIP2200 gas is applied correctly', async () => {
     // setup the accounts for this test
-    const caller = new Address(hexToBytes('0x00000000000000000000000000000000000000ee')) // caller address
-    const address = new Address(hexToBytes('0x00000000000000000000000000000000000000ff'))
+    const caller = new Address(
+      hexToBytes('0x00000000000000000000000000000000000000000000000000000000000000ee'),
+    ) // caller address
+    const address = new Address(
+      hexToBytes('0x00000000000000000000000000000000000000000000000000000000000000ff'),
+    )
     // setup the vm
     const common = new Common({ chain: Mainnet, hardfork: Hardfork.Istanbul })
     const evm = await createEVM({ common })
@@ -197,8 +209,12 @@ describe('RunCall tests', () => {
 
   it('ensure correct gas for pre-constantinople sstore', async () => {
     // setup the accounts for this test
-    const caller = new Address(hexToBytes('0x00000000000000000000000000000000000000ee')) // caller address
-    const address = new Address(hexToBytes('0x00000000000000000000000000000000000000ff'))
+    const caller = new Address(
+      hexToBytes('0x00000000000000000000000000000000000000000000000000000000000000ee'),
+    ) // caller address
+    const address = new Address(
+      hexToBytes('0x00000000000000000000000000000000000000000000000000000000000000ff'),
+    )
     // setup the vm
     const common = new Common({ chain: Mainnet, hardfork: Hardfork.Chainstart })
     const evm = await createEVM({ common })
@@ -222,8 +238,12 @@ describe('RunCall tests', () => {
 
   it('ensure correct gas for calling non-existent accounts in homestead', async () => {
     // setup the accounts for this test
-    const caller = new Address(hexToBytes('0x00000000000000000000000000000000000000ee')) // caller address
-    const address = new Address(hexToBytes('0x00000000000000000000000000000000000000ff'))
+    const caller = new Address(
+      hexToBytes('0x00000000000000000000000000000000000000000000000000000000000000ee'),
+    ) // caller address
+    const address = new Address(
+      hexToBytes('0x00000000000000000000000000000000000000000000000000000000000000ff'),
+    )
     // setup the vm
     const common = new Common({ chain: Mainnet, hardfork: Hardfork.Homestead })
     const evm = await createEVM({ common })
@@ -249,8 +269,12 @@ describe('RunCall tests', () => {
 
   it('ensure callcode goes OOG if the gas argument is more than the gas left in the homestead fork', async () => {
     // setup the accounts for this test
-    const caller = new Address(hexToBytes('0x00000000000000000000000000000000000000ee')) // caller address
-    const address = new Address(hexToBytes('0x00000000000000000000000000000000000000ff'))
+    const caller = new Address(
+      hexToBytes('0x00000000000000000000000000000000000000000000000000000000000000ee'),
+    ) // caller address
+    const address = new Address(
+      hexToBytes('0x00000000000000000000000000000000000000000000000000000000000000ff'),
+    )
     // setup the vm
     const common = new Common({ chain: Mainnet, hardfork: Hardfork.Homestead })
     const evm = await createEVM({ common })
@@ -276,8 +300,12 @@ describe('RunCall tests', () => {
 
   it('ensure selfdestruct pays for creating new accounts', async () => {
     // setup the accounts for this test
-    const caller = new Address(hexToBytes('0x00000000000000000000000000000000000000ee')) // caller address
-    const address = new Address(hexToBytes('0x00000000000000000000000000000000000000ff'))
+    const caller = new Address(
+      hexToBytes('0x00000000000000000000000000000000000000000000000000000000000000ee'),
+    ) // caller address
+    const address = new Address(
+      hexToBytes('0x00000000000000000000000000000000000000000000000000000000000000ff'),
+    )
     // setup the vm
     const common = new Common({ chain: Mainnet, hardfork: Hardfork.TangerineWhistle })
     const evm = await createEVM({ common })
@@ -304,8 +332,12 @@ describe('RunCall tests', () => {
 
   it('ensure that sstores pay for the right gas costs pre-byzantium', async () => {
     // setup the accounts for this test
-    const caller = new Address(hexToBytes('0x00000000000000000000000000000000000000ee')) // caller address
-    const address = new Address(hexToBytes('0x00000000000000000000000000000000000000ff'))
+    const caller = new Address(
+      hexToBytes('0x00000000000000000000000000000000000000000000000000000000000000ee'),
+    ) // caller address
+    const address = new Address(
+      hexToBytes('0x00000000000000000000000000000000000000000000000000000000000000ff'),
+    )
     // setup the vm
     const common = new Common({ chain: Mainnet, hardfork: Hardfork.Chainstart })
     const evm = await createEVM({ common })
@@ -369,8 +401,12 @@ describe('RunCall tests', () => {
 
   it('Ensure that contracts cannot exceed nonce of MAX_UINT64 when creating new contracts (EIP-2681)', async () => {
     // setup the accounts for this test
-    const caller = new Address(hexToBytes('0x00000000000000000000000000000000000000ee')) // caller address
-    const address = new Address(hexToBytes('0x00000000000000000000000000000000000000ff'))
+    const caller = new Address(
+      hexToBytes('0x00000000000000000000000000000000000000000000000000000000000000ee'),
+    ) // caller address
+    const address = new Address(
+      hexToBytes('0x00000000000000000000000000000000000000000000000000000000000000ff'),
+    )
     const slot = hexToBytes(`0x${'00'.repeat(32)}`)
     const emptyBytes = hexToBytes('0x')
     // setup the vm
@@ -424,7 +460,9 @@ describe('RunCall tests', () => {
     // Exploit post-mortem: https://github.com/ethereum/go-ethereum/blob/master/docs/postmortems/2021-08-22-split-postmortem.md
     // Permalink: https://github.com/ethereum/go-ethereum/blob/90987db7334c1d10eb866ca550efedb66dea8a20/docs/postmortems/2021-08-22-split-postmortem.md
     // setup the accounts for this test
-    const caller = new Address(hexToBytes('0x1a02a619e51cc5f8a2a61d2a60f6c80476ee8ead')) // caller address
+    const caller = new Address(
+      hexToBytes('0x1a02a619e51cc5f8a2a61d2a60f6c80476ee8ead123456789012345678901234'),
+    ) // caller address
     // setup the vm
     const common = new Common({ chain: Mainnet, hardfork: Hardfork.London })
     const evm = await createEVM({ common })
@@ -444,7 +482,7 @@ describe('RunCall tests', () => {
     }
 
     const result = await evm.runCall(runCallArgs)
-    const expectedAddress = '0x28373a29d17af317e669579d97e7dddc9da6e3e2'
+    const expectedAddress = '0x28373a29d17af317e669579d97e7dddc9da6e3e2123456789012345678901234'
     const expectedCode =
       '0x00000000000000000000000028373a29d17af317e669579d97e7dddc9da6e3e2e7dddc9da6e3e200000000000000000000000000000000000000000000000000'
 
@@ -481,7 +519,9 @@ describe('RunCall tests', () => {
 
     // runCall against a contract to reach `_reduceSenderBalance`
     const contractCode = hexToBytes('0x00') // 00: STOP
-    const contractAddress = createAddressFromString('0x000000000000000000000000636F6E7472616374')
+    const contractAddress = createAddressFromString(
+      '0x000000000000000000000000000000000000000000000000636F6E7472616374',
+    )
     await evm.stateManager.putCode(contractAddress, contractCode)
     const senderKey = hexToBytes(
       '0xe331b6d69882b4cb4ea581d88e0b604039a3de5967688d3dcffdd2270c0fd109',
@@ -519,7 +559,9 @@ describe('RunCall tests', () => {
 
   it('runCall() => allows to detect for max code size deposit errors', async () => {
     // setup the accounts for this test
-    const caller = new Address(hexToBytes('0x00000000000000000000000000000000000000ee')) // caller address
+    const caller = new Address(
+      hexToBytes('0x00000000000000000000000000000000000000000000000000000000000000ee'),
+    ) // caller address
     // setup the evm
     const common = new Common({ chain: Mainnet, hardfork: Hardfork.Istanbul })
     const evm = await createEVM({ common })

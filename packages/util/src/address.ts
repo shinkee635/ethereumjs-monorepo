@@ -25,7 +25,7 @@ export class Address {
   public readonly bytes: Uint8Array
 
   constructor(bytes: Uint8Array) {
-    if (bytes.length !== 20) {
+    if (bytes.length !== 32) {
       throw EthereumJSErrorWithoutCode('Invalid address length')
     }
     this.bytes = bytes
@@ -42,7 +42,7 @@ export class Address {
    * Is address zero.
    */
   isZero(): boolean {
-    return this.equals(new Address(new Uint8Array(20)))
+    return this.equals(new Address(new Uint8Array(32)))
   }
 
   /**
@@ -75,7 +75,7 @@ export class Address {
  * Returns the zero address.
  */
 export function createZeroAddress(): Address {
-  return new Address(new Uint8Array(20))
+  return new Address(new Uint8Array(32))
 }
 
 /**
@@ -84,10 +84,10 @@ export function createZeroAddress(): Address {
  */
 export function createAddressFromBigInt(value: bigint): Address {
   const bytes = bigIntToBytes(value)
-  if (bytes.length > 20) {
+  if (bytes.length > 32) {
     throw EthereumJSErrorWithoutCode(`Invalid address, too long: ${bytes.length}`)
   }
-  return new Address(setLengthLeft(bytes, 20))
+  return new Address(setLengthLeft(bytes, 32))
 }
 
 /**

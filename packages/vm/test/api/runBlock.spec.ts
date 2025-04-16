@@ -329,18 +329,20 @@ describe('runBlock() -> runtime behavior', async () => {
     const fundBalance1 = BigInt('0x1111')
     const accountFunded1 = createAccountWithDefaults(BigInt(0), fundBalance1)
     const DAOFundedContractAddress1 = new Address(
-      hexToBytes('0xd4fe7bc31cedb7bfb8a345f31e668033056b2728'),
+      hexToBytes('0x000000000000000000000000d4fe7bc31cedb7bfb8a345f31e668033056b2728'),
     )
     await vm.stateManager.putAccount(DAOFundedContractAddress1, accountFunded1)
 
     const fundBalance2 = BigInt('0x2222')
     const accountFunded2 = createAccountWithDefaults(BigInt(0), fundBalance2)
     const DAOFundedContractAddress2 = new Address(
-      hexToBytes('0xb3fb0e5aba0e20e5c49d252dfd30e102b171a425'),
+      hexToBytes('0x000000000000000000000000b3fb0e5aba0e20e5c49d252dfd30e102b171a425'),
     )
     await vm.stateManager.putAccount(DAOFundedContractAddress2, accountFunded2)
 
-    const DAORefundAddress = new Address(hexToBytes('0xbf4ed7b27f1d666546e30d74d50d173d20bca754'))
+    const DAORefundAddress = new Address(
+      hexToBytes('0x000000000000000000000000bf4ed7b27f1d666546e30d74d50d173d20bca754'),
+    )
     const fundBalanceRefund = BigInt('0x4444')
     const accountRefund = createAccountWithDefaults(BigInt(0), fundBalanceRefund)
     await vm.stateManager.putAccount(DAORefundAddress, accountRefund)
@@ -370,7 +372,9 @@ describe('runBlock() -> runtime behavior', async () => {
     const vm = await setupVM({ common })
 
     const signer = {
-      address: new Address(hexToBytes('0x0b90087d864e82a284dca15923f3776de6bb016f')),
+      address: new Address(
+        hexToBytes('0x0000000000000000000000000b90087d864e82a284dca15923f3776de6bb016f'),
+      ),
       privateKey: hexToBytes('0x64bf9cc30328b0e42387b3c82c614e6386259136235e20c1357bd11cdee86993'),
       publicKey: hexToBytes(
         '0x40b2ebdf4b53206d2d3d3d59e7e2f13b1ea68305aec71d5d24cefe7f24ecae886d241f9267f04702d7f693655eb7b4aa23f30dcd0c3c5f2b970aad7c8a828195',
@@ -378,7 +382,9 @@ describe('runBlock() -> runtime behavior', async () => {
     }
 
     const otherUser = {
-      address: new Address(hexToBytes('0x6f62d8382bf2587361db73ceca28be91b2acb6df')),
+      address: new Address(
+        hexToBytes('0x0000000000000000000000006f62d8382bf2587361db73ceca28be91b2acb6df'),
+      ),
       privateKey: hexToBytes('0x2a6e9ad5a6a8e4f17149b8bc7128bf090566a11dbd63c30e5a0ee9f161309cd6'),
       publicKey: hexToBytes(
         '0xca0a55f6e81cb897aee6a1c390aa83435c41048faa0564b226cfc9f3df48b73e846377fb0fd606df073addc7bd851f22547afbbdd5c3b028c91399df802083a2',
@@ -534,7 +540,9 @@ describe('runBlock() -> tx types', async () => {
     const common = new Common({ chain: Mainnet, hardfork: Hardfork.Berlin })
     const vm = await setupVM({ common })
 
-    const address = createAddressFromString('0xccfd725760a68823ff1e062f4cc97e1360e8d997')
+    const address = createAddressFromString(
+      '0x000000000000000000000000ccfd725760a68823ff1e062f4cc97e1360e8d997',
+    )
     await setBalance(vm, address)
 
     const tx = createLegacyTx({ gasLimit: 53000, value: 1 }, { common, freeze: false })
@@ -550,7 +558,9 @@ describe('runBlock() -> tx types', async () => {
     const common = new Common({ chain: Mainnet, hardfork: Hardfork.Berlin })
     const vm = await setupVM({ common })
 
-    const address = createAddressFromString('0xccfd725760a68823ff1e062f4cc97e1360e8d997')
+    const address = createAddressFromString(
+      '0x000000000000000000000000ccfd725760a68823ff1e062f4cc97e1360e8d997',
+    )
     await setBalance(vm, address)
 
     const tx = createAccessList2930Tx(
@@ -569,7 +579,9 @@ describe('runBlock() -> tx types', async () => {
     const common = new Common({ chain: Mainnet, hardfork: Hardfork.London })
     const vm = await setupVM({ common })
 
-    const address = createAddressFromString('0xccfd725760a68823ff1e062f4cc97e1360e8d997')
+    const address = createAddressFromString(
+      '0x000000000000000000000000ccfd725760a68823ff1e062f4cc97e1360e8d997',
+    )
     await setBalance(vm, address)
 
     const tx = createFeeMarket1559Tx(
@@ -601,8 +613,8 @@ describe('runBlock() -> tx types', async () => {
     const defaultSenderPkey = hexToBytes(`0x${'40'.repeat(32)}`)
     const defaultSenderAddr = new Address(privateToAddress(defaultSenderPkey))
 
-    const code1Addr = createAddressFromString(`0x${'01'.repeat(20)}`)
-    const code2Addr = createAddressFromString(`0x${'02'.repeat(20)}`)
+    const code1Addr = createAddressFromString(`0x${'01'.repeat(32)}`)
+    const code2Addr = createAddressFromString(`0x${'02'.repeat(32)}`)
 
     type GetAuthListOpts = {
       chainId?: number

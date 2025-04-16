@@ -7,7 +7,9 @@ import type { ExecResult } from '../src/types.ts'
 
 const sender = new Address(hexToBytes(`0x${'44'.repeat(20)}`))
 const newPrecompile = new Address(hexToBytes(`0x${'ff'.repeat(20)}`))
-const shaAddress = new Address(hexToBytes('0x0000000000000000000000000000000000000002'))
+const shaAddress = new Address(
+  hexToBytes('0x0000000000000000000000000000000000000000000000000000000000000002'),
+)
 const expectedReturn = utf8ToBytes('1337')
 const expectedGas = BigInt(10)
 

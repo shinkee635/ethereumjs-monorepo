@@ -143,7 +143,9 @@ describe('BlockBuilder', () => {
 
   it('should correctly seal a PoA block', async () => {
     const signer = {
-      address: new Address(hexToBytes('0x0b90087d864e82a284dca15923f3776de6bb016f')),
+      address: new Address(
+        hexToBytes('0x0000000000000000000000000b90087d864e82a284dca15923f3776de6bb016f'),
+      ),
       privateKey: hexToBytes('0x64bf9cc30328b0e42387b3c82c614e6386259136235e20c1357bd11cdee86993'),
       publicKey: hexToBytes(
         '0x40b2ebdf4b53206d2d3d3d59e7e2f13b1ea68305aec71d5d24cefe7f24ecae886d241f9267f04702d7f693655eb7b4aa23f30dcd0c3c5f2b970aad7c8a828195',
@@ -178,7 +180,7 @@ describe('BlockBuilder', () => {
       gasLimit: '0x47b760',
       difficulty: '0x1',
       mixHash: '0x0000000000000000000000000000000000000000000000000000000000000000',
-      coinbase: '0x0000000000000000000000000000000000000000',
+      coinbase: '0x0000000000000000000000000000000000000000000000000000000000000000',
       number: '0x0',
       gasUsed: '0x0',
       parentHash: '0x0000000000000000000000000000000000000000000000000000000000000000',
@@ -186,7 +188,9 @@ describe('BlockBuilder', () => {
     }
 
     const A = {
-      address: new Address(hexToBytes('0x0b90087d864e82a284dca15923f3776de6bb016f')),
+      address: new Address(
+        hexToBytes('0x0000000000000000000000000b90087d864e82a284dca15923f3776de6bb016f'),
+      ),
       privateKey: hexToBytes('0x64bf9cc30328b0e42387b3c82c614e6386259136235e20c1357bd11cdee86993'),
     }
     const addr = A.address.toString().slice(2)

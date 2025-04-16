@@ -27,7 +27,7 @@ const ones32: PrefixedHexString = `0x${'01'.repeat(32)}`
 function getTxData(override: Partial<AuthorizationListItem> = {}): TxData {
   const validAuthorizationList: AuthorizationListItem = {
     chainId: '0x',
-    address: `0x${'20'.repeat(20)}`,
+    address: `0x${'20'.repeat(32)}`,
     nonce: '0x1',
     yParity: '0x1',
     r: ones32,
@@ -83,7 +83,7 @@ describe('[EOACode7702Transaction]', () => {
         {
           address: `0x${'20'.repeat(21)}`,
         },
-        'address length should be 20 bytes',
+        'address length should be 32 bytes',
       ],
       [{ s: undefined as never }, 's is not defined'],
       [{ r: undefined as never }, 'r is not defined'],

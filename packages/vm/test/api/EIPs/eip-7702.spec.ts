@@ -36,8 +36,8 @@ const defaultAuthAddr = new Address(privateToAddress(defaultAuthPkey))
 const defaultSenderPkey = hexToBytes(`0x${'40'.repeat(32)}`)
 const defaultSenderAddr = new Address(privateToAddress(defaultSenderPkey))
 
-const code1Addr = createAddressFromString(`0x${'01'.repeat(20)}`)
-const code2Addr = createAddressFromString(`0x${'02'.repeat(20)}`)
+const code1Addr = createAddressFromString(`0x${'01'.repeat(32)}`)
+const code2Addr = createAddressFromString(`0x${'02'.repeat(32)}`)
 
 type GetAuthListOpts = {
   chainId?: number
@@ -208,7 +208,7 @@ describe('EIP 7702: set code to EOA accounts', () => {
     const checkAddressWarmCode = hexToBytes(
       `0x5F5F5F5F5F73${defaultAuthAddr.toString().slice(2)}5AF1`,
     )
-    const checkAddressWarm = createAddressFromString(`0x${'FA'.repeat(20)}`)
+    const checkAddressWarm = createAddressFromString(`0x${'FA'.repeat(32)}`)
 
     await vm.stateManager.putCode(checkAddressWarm, checkAddressWarmCode)
 
@@ -240,7 +240,7 @@ describe('test EIP-7702 opcodes', () => {
     // extcodesize and extcodehash
     const deploymentAddress = createZeroAddress()
     const randomCode = hexToBytes('0x010203040506')
-    const randomCodeAddress = createAddressFromString('0x' + 'aa'.repeat(20))
+    const randomCodeAddress = createAddressFromString('0x' + 'aa'.repeat(32))
 
     const delegatedCode = concatBytes(
       eip7702Designator,

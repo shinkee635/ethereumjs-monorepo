@@ -44,7 +44,7 @@ import { Account, Address, hexToBytes } from '@ethereumjs/util'
 
 const main = async () => {
   const stateManager = new MerkleStateManager()
-  const address = new Address(hexToBytes('0xa94f5374fce5edbc8e2a8697c15331677e6ebf0b'))
+  const address = new Address(hexToBytes('0x000000000000000000000000a94f5374fce5edbc8e2a8697c15331677e6ebf0b'))
   const account = new Account(BigInt(0), BigInt(1000))
   await stateManager.checkpoint()
   await stateManager.putAccount(address, account)
@@ -127,7 +127,7 @@ import { Address, hexToBytes } from '@ethereumjs/util'
 const main = async () => {
   // setup `stateManager` with some existing address
   const stateManager = new MerkleStateManager()
-  const contractAddress = new Address(hexToBytes('0xa94f5374fce5edbc8e2a8697c15331677e6ebf0b'))
+  const contractAddress = new Address(hexToBytes('0x000000000000000000000000a94f5374fce5edbc8e2a8697c15331677e6ebf0b'))
   const byteCode = hexToBytes('0x67ffffffffffffffff600160006000fb')
   const storageKey1 = hexToBytes(
     '0x0000000000000000000000000000000000000000000000000000000000000001',
@@ -183,7 +183,7 @@ const main = async () => {
   try {
     const provider = 'https://path.to.my.provider.com'
     const stateManager = new RPCStateManager({ provider, blockTag: 500000n })
-    const vitalikDotEth = createAddressFromString('0xd8da6bf26964af9d7eed9e03e53415d37aa96045')
+    const vitalikDotEth = createAddressFromString('0x000000000000000000000000d8da6bf26964af9d7eed9e03e53415d37aa96045')
     const account = await stateManager.getAccount(vitalikDotEth)
     console.log('Vitalik has a current ETH balance of ', account?.balance)
   } catch (e) {

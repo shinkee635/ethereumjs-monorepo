@@ -34,7 +34,9 @@ describe('StateManager -> Code', () => {
         const codeStateManager = new MerkleStateManager({
           caches: new Caches({ account: accountCacheOpts, code: codeCacheOpts }),
         })
-        const address1 = new Address(hexToBytes('0xa94f5374fce5edbc8e2a8697c15331677e6ebf0b'))
+        const address1 = new Address(
+          hexToBytes('0x000000000000000000000000a94f5374fce5edbc8e2a8697c15331677e6ebf0b'),
+        )
         const account = createAccountWithDefaults()
         const key1 = hexToBytes(`0x${'00'.repeat(32)}`)
         const key2 = hexToBytes(`0x${'00'.repeat(31)}01`)
@@ -91,7 +93,9 @@ describe('StateManager -> Code', () => {
         const stateManager = new MerkleStateManager({
           caches: new Caches({ account: accountCacheOpts, code: codeCacheOpts }),
         })
-        const address = new Address(hexToBytes('0xa94f5374fce5edbc8e2a8697c15331677e6ebf0b'))
+        const address = new Address(
+          hexToBytes('0x000000000000000000000000a94f5374fce5edbc8e2a8697c15331677e6ebf0b'),
+        )
         const code = hexToBytes(
           '0x73095e7baea6a6c7c4c2dfeb977efac326af552d873173095e7baea6a6c7c4c2dfeb977efac326af552d873157',
         )
@@ -111,7 +115,9 @@ describe('StateManager -> Code', () => {
         const stateManager = new MerkleStateManager({
           caches: new Caches({ account: accountCacheOpts, code: codeCacheOpts }),
         })
-        const address = new Address(hexToBytes('0xa94f5374fce5edbc8e2a8697c15331677e6ebf0b'))
+        const address = new Address(
+          hexToBytes('0x000000000000000000000000a94f5374fce5edbc8e2a8697c15331677e6ebf0b'),
+        )
         const raw: AccountData = {
           nonce: '0x0',
           balance: '0x03e7',
@@ -126,7 +132,9 @@ describe('StateManager -> Code', () => {
         const stateManager = new MerkleStateManager({
           caches: new Caches({ account: accountCacheOpts, code: codeCacheOpts }),
         })
-        const address = new Address(hexToBytes('0xa94f5374fce5edbc8e2a8697c15331677e6ebf0b'))
+        const address = new Address(
+          hexToBytes('0x000000000000000000000000a94f5374fce5edbc8e2a8697c15331677e6ebf0b'),
+        )
         const raw: AccountData = {
           nonce: '0x0',
           balance: '0x03e7',
@@ -143,7 +151,9 @@ describe('StateManager -> Code', () => {
         const stateManager = new MerkleStateManager({
           caches: new Caches({ account: accountCacheOpts, code: codeCacheOpts }),
         })
-        const address = new Address(hexToBytes('0xa94f5374fce5edbc8e2a8697c15331677e6ebf0b'))
+        const address = new Address(
+          hexToBytes('0x000000000000000000000000a94f5374fce5edbc8e2a8697c15331677e6ebf0b'),
+        )
         const code = hexToBytes('0x80')
         await stateManager.putCode(address, code)
         const codeRetrieved = await stateManager.getCode(address)
@@ -155,7 +165,9 @@ describe('StateManager -> Code', () => {
           prefixCodeHashes: false,
           caches: new Caches({ account: accountCacheOpts, code: codeCacheOpts }),
         })
-        const address = new Address(hexToBytes('0xa94f5374fce5edbc8e2a8697c15331677e6ebf0b'))
+        const address = new Address(
+          hexToBytes('0x000000000000000000000000a94f5374fce5edbc8e2a8697c15331677e6ebf0b'),
+        )
         const code = hexToBytes('0x80')
         try {
           await stateManager.putCode(address, code)

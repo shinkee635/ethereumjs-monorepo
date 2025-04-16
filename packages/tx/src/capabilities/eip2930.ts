@@ -38,9 +38,9 @@ export function verifyAccessList(tx: EIP2930CompatibleTx) {
       )
     }
     const [address, storageSlots] = accessListItem
-    if (address.length !== 20) {
+    if (address.length !== 32) {
       throw EthereumJSErrorWithoutCode(
-        'Invalid EIP-2930 transaction: address length should be 20 bytes',
+        'Invalid EIP-2930 transaction: address length should be 32 bytes',
       )
     }
     for (const slot of storageSlots) {

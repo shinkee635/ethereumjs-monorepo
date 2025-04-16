@@ -12,7 +12,8 @@ const tx = createLegacyTxFromRLP(txData, { common })
 
 if (
   tx.isValid() &&
-  tx.getSenderAddress().toString() === '0x9dfd2d2b2ed960923f7bf2e8883d73f213f3b24b'
+  tx.getSenderAddress().toString() ===
+    '0x0000000000000000000000009dfd2d2b2ed960923f7bf2e8883d73f213f3b24b'
 ) {
   console.log('Correctly created the tx')
 } else {

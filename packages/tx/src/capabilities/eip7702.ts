@@ -51,9 +51,9 @@ export function verifyAuthorizationList(tx: EIP7702CompatibleTx) {
 
     validateNoLeadingZeroes({ yParity, r, s, nonce, chainId })
 
-    if (address.length !== 20) {
+    if (address.length !== 32) {
       throw EthereumJSErrorWithoutCode(
-        'Invalid EIP-7702 transaction: address length should be 20 bytes',
+        'Invalid EIP-7702 transaction: address length should be 32 bytes',
       )
     }
 

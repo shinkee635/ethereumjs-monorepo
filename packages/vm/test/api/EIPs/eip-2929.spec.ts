@@ -10,7 +10,9 @@ import type { PrefixedHexString } from '@ethereumjs/util'
 // Test cases source: https://gist.github.com/holiman/174548cad102096858583c6fbbb0649a
 describe('EIP 2929: gas cost tests', () => {
   const initialGas = BigInt(0xffffffffff)
-  const address = new Address(hexToBytes('0x000000000000000000000000636F6E7472616374'))
+  const address = new Address(
+    hexToBytes('0x000000000000000000000000000000000000000000000000636F6E7472616374'),
+  )
   const senderKey = hexToBytes('0xe331b6d69882b4cb4ea581d88e0b604039a3de5967688d3dcffdd2270c0fd109')
   const common = new Common({ chain: Mainnet, hardfork: Hardfork.Berlin, eips: [2929] })
 

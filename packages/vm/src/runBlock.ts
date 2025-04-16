@@ -52,7 +52,7 @@ import type { VM } from './vm.ts'
 const debug = debugDefault('vm:block')
 
 const parentBeaconBlockRootAddress = createAddressFromString(
-  '0x000F3df6D732807Ef1319fB7B8bB8522d0Beac02',
+  '0x000000000000000000000000000F3df6D732807Ef1319fB7B8bB8522d0Beac02',
 )
 
 let enableProfiler = false

@@ -77,7 +77,7 @@ export function authorizationListJSONItemToBytes(
 function unsignedAuthorizationListToBytes(input: AuthorizationListItemUnsigned) {
   const { chainId: chainIdHex, address: addressHex, nonce: nonceHex } = input
   const chainId = hexToBytes(chainIdHex)
-  const address = setLengthLeft(hexToBytes(addressHex), 20)
+  const address = setLengthLeft(hexToBytes(addressHex), 32)
   const nonce = hexToBytes(nonceHex)
   return [chainId, address, nonce]
 }
@@ -93,8 +93,8 @@ export function authorizationMessageToSign(
   if (Array.isArray(input)) {
     // The address is validated, the chainId and nonce will be `unpadBytes` such that these are valid
     const [chainId, address, nonce] = input
-    if (address.length !== 20) {
-      throw EthereumJSErrorWithoutCode('Cannot sign authority: address length should be 20 bytes')
+    if (address.length !== 32) {
+      throw EthereumJSErrorWithoutCode('Cannot sign authority: address length should be 32 bytes')
     }
     return concatBytes(
       AUTHORITY_SIGNING_MAGIC,

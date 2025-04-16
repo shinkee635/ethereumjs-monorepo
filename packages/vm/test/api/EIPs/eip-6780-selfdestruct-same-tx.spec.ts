@@ -67,7 +67,7 @@ describe('EIP 6780 tests', () => {
       'account does not exist, so storage is cleared',
     )
     assert.equal(
-      (await vm.stateManager.getAccount(createAddressFromString('0x' + '00'.repeat(19) + '01')))!
+      (await vm.stateManager.getAccount(createAddressFromString('0x' + '00'.repeat(31) + '01')))!
         .balance,
       BigInt(value),
       'balance sent to target',
@@ -77,7 +77,7 @@ describe('EIP 6780 tests', () => {
   it('should not destroy contract if selfdestructed in a tx after creating the contract', async () => {
     const vm = await getVM(common)
 
-    const target = createAddressFromString('0x' + 'ff'.repeat(20))
+    const target = createAddressFromString('0x' + 'ff'.repeat(32))
 
     await vm.stateManager.putCode(target, payload)
     const targetContract = await vm.stateManager.getAccount(target)

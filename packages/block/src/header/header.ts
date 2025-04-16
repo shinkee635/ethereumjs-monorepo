@@ -390,9 +390,9 @@ export class BlockHeader {
         }
       } else {
         const signerLength = this.extraData.length - minLength
-        if (signerLength % 20 !== 0) {
+        if (signerLength % 32 !== 0) {
           const msg = this._errorMsg(
-            `invalid signer list length in extraData, received signer length of ${signerLength} (not divisible by 20)`,
+            `invalid signer list length in extraData, received signer length of ${signerLength} (not divisible by 32)`,
           )
           throw EthereumJSErrorWithoutCode(msg)
         }
